@@ -22,6 +22,65 @@
 
 ## <a name="parte1">1. Introdução</a>
 
+#### v1.3-instalando-o-mysql-v1
+
+- https://dev.mysql.com/downloads/
+
+#### v1.5-criando-primeiras-tabelas-no-mysql-v1
+
+```sql
+# algawork_jpahibernate_cadclientes
+
+CREATE TABLE cliente (
+  codigo BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  idade INTEGER,
+  sexo VARCHAR(1) NOT NULL,
+  profissao VARCHAR(30),
+  PRIMARY KEY (codigo)
+);
+
+insert into cliente(nome, idade, sexo, profissao) values("Jose", 34, "M", "Analista de sistemas");
+insert into cliente(nome, idade, sexo, profissao) values("Maria", 24, "F", "Analista contabil");
+insert into cliente(nome, idade, sexo, profissao) values("Marcia", 26, "F", "Administradora");
+insert into cliente(nome, idade, sexo, profissao) values("Caio", 46, "M", "Engenheiro");
+```
+
+#### v1.6-mapeamento-objeto-relacional-v1
+
+![Mapeamento obj relacional](imgs/map-obj-rel.png)
+
+#### v1.7-relacionamento-entre-tabelas-v1
+
+```sql
+CREATE TABLE conta_corrente (
+  codigo BIGINT NOT NULL AUTO_INCREMENT,
+  numero VARCHAR(12) NOT NULL,
+  saldo DECIMAL,
+  codigo_cliente BIGINT NOT NULL,
+  PRIMARY KEY (codigo),
+  FOREIGN KEY (codigo_cliente) REFERENCES cliente (codigo)
+);
+
+insert into conta_corrente(numero, saldo, codigo_cliente) values( 448888, 120.00, 2);
+
+select cli.nome,cc.saldo
+from cliente cli, conta_corrente cc
+where cli.codigo = cc.codigo_cliente
+
+```
+
+#### v1.8-instalando-e-configurando-o-eclipse-v1
+ 
+- https://www.eclipse.org/downloads/
+
+#### v1.9-download-e-configuracao-do-hibernate-v1
+
+- http://hibernate.org/
+ 
+#### v1.10-download-e-configuracao-do-driver-mysql-v1
+
+- https://dev.mysql.com/downloads/connector/j/5.1.html
 
 [Voltar ao Índice](#indice)
 
