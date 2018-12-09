@@ -88,6 +88,142 @@ where cli.codigo = cc.codigo_cliente
 
 ## <a name="parte2">2. Iniciando com JPA 2</a>
 
+#### v2.1-salvando-o-primeiro-objeto-no-banco-de-dados-v1
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<persistence-unit name="exemploPU" transaction-type="RESOURCE_LOCAL">
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/algawork_jpahibernate_cadclientes"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value=""/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			
+			<!-- validate | update | create | create-drop -->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+		</properties>
+	
+	</persistence-unit>
+	
+</persistence>
+```
+
+```java
+package com.algaworks.curso.modelo;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long codigo;
+	private String nome;
+	private Integer idade;
+	private String sexo;
+	private String profissao;
+	public Long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Integer getIdade() {
+		return idade;
+	}
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	public String getProfissao() {
+		return profissao;
+	}
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
+	
+	
+}
+
+```
+
+```java
+package com.algaworks.curso.main;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.algaworks.curso.modelo.Cliente;
+
+public class SalvandoPrimeiroObjeto {
+
+	public static void main(String[] args) {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemploPU");
+		EntityManager em = emf.createEntityManager();
+		
+		Cliente cliente = new Cliente();
+		cliente.setNome("Maria joaquina");
+		cliente.setIdade(22);
+		cliente.setProfissao("Atriz");
+		cliente.setSexo("F");
+		
+		
+		em.getTransaction().begin();
+		em.persist(cliente);
+		em.getTransaction().commit();
+		
+		System.out.println("Cliente Salvo com sucesso");
+		//em.close();
+	}
+
+}
+
+```
+
+#### v2.2-primeira-consulta-com-jpa-v1
+
+
+#### v2.3-removendo-objeto-do-banco-de-dados-v1
+
+
+#### v2.4-atualizando-o-banco-de-dados-v1
+
+
+#### v2.5. Fazendo seu primeiro CRUD
+
+
+#### v2.6-entendendo-um-pouco-mais-da-transacao-v1
+
+
+#### v2.7-a-java-persistence-query-language-JPQL-v1
+
+
+#### v2.8-fechando-o-entity-manager-v1
+
+
 
 [Voltar ao Índice](#indice)
 
