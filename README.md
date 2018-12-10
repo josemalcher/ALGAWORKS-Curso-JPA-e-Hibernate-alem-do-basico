@@ -239,6 +239,35 @@ public class ConsultandoPrimeiroObjeto {
 
 #### v2.3-removendo-objeto-do-banco-de-dados-v1
 
+```java
+package com.algaworks.curso.main;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.algaworks.curso.modelo.Cliente;
+
+public class RemovendoPrimeiroObjeto {
+
+	public static void main(String[] args) {
+
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemploPU");
+		EntityManager em = emf.createEntityManager();
+		
+		Cliente cliente = em.find(Cliente.class, 5L);
+		
+		em.getTransaction().begin();
+		em.remove(cliente);
+		em.getTransaction().commit();
+		
+		System.out.println("Objeto removido com sucesso");
+
+	}
+
+}
+
+```
 
 #### v2.4-atualizando-o-banco-de-dados-v1
 
