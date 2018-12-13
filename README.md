@@ -305,6 +305,20 @@ public class AtualizandoPrimeiroObjeto {
 
 #### v2.5. Fazendo seu primeiro CRUD
 
+Está na hora de você criar seu primeiro CRUD depois de ter assistido essa pequena introdução.
+
+Para isso você irá fazer outro projeto, bem parecido com o que fizemos nas últimas vídeo aulas mas, será que você consegue fazê-lo sozinho e com algum "plus"?
+
+Crie um novo projeto para já ir se acostumando com o que você precisa para fazer configurar ao criar um novo projeto com JPA e conexão ao MySQL. Chame-o de agenda-telefonica.
+
+Crie um modelo como o mostrado na classe abaixo.
+
+![](/imgs/2-5exer.png)
+ 
+Dica: Para o mapeamento utilize @Temporal(TemporalType.TIMESTAMP) para o atributo do tipo data (java.util.Date). Nós iremos ver mais detalhes sobre essa anotação, agora é só para você sentir um gostinho!
+
+Crie então 4 classes para fazer o CRUD (Create, Retrieve, Update e Delete - Salvar, Consultar, Atualizar e Remover) no banco de dados como fizemos nas últimas vídeo aulas.
+
 
 #### v2.6-entendendo-um-pouco-mais-da-transacao-v1
 
